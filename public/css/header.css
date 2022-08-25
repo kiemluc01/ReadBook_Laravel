@@ -1,0 +1,85 @@
+.header {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(10, 4, 4);
+    color: #FFF;
+    font-weight: bold;
+}
+
+.header .menu,
+.header .member,
+.header .login {
+    display: flex;
+    margin: 0;
+    list-style-type: none;
+    position: relative;
+}
+
+.header .menu {
+    width: 50%;
+}
+
+header img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%/50%;
+    -webkit-border-radius: 50%/50%;
+    -moz-border-radius: 50%/50%;
+    -ms-border-radius: 50%/50%;
+    -o-border-radius: 50%/50%;
+}
+
+li a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+li {
+    line-height: 10vh;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+li:hover {
+    background-color: rgb(53, 51, 51);
+}
+
+li img {
+    margin-top: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%/50%;
+    -webkit-border-radius: 50%/50%;
+    -moz-border-radius: 50%/50%;
+    -ms-border-radius: 50%/50%;
+    -o-border-radius: 50%/50%;
+}
+
+.member>li:hover {
+    background-color: rgb(10, 4, 4);
+}
+
+.submenu {
+    display: none;
+    margin: 0;
+    padding: 0;
+    height: 7.5vh;
+    width: 100%;
+    background-color: rgb(10, 4, 4);
+}
+
+.submenu>li {
+    height: 5vh;
+    width: 100%;
+    line-height: 5vh;
+    padding: 0;
+    margin: 0;
+    text-indent: 10px;
+}
+
+li:hover>ul {
+    display: block;
+}

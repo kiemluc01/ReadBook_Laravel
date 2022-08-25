@@ -1,0 +1,57 @@
+.row {
+    width: 100%;
+}
+
+.row .item-row {
+    width: 100%;
+    display: flex;
+}
+
+.row h1 {
+    margin: 0;
+    padding: 5px;
+    margin-top: 5px;
+    background-color: aqua;
+}
+
+.row .item-row .item {
+    width: 15%;
+    margin: 2%;
+    height: 38vh;
+    background-color: rgb(233, 233, 233);
+    margin-left: 2.5%;
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
+.row .item-row .item img {
+    width: 70%;
+    height: 50%!important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row .item-row .item h2,
+.row .item-row .item h4,
+.row .item-row .item p {
+    margin: 0;
+    padding: 0;
+}
+
+.row .item-row .item h2,
+.row .item-row .item h4 {
+    text-align: center;
+}
+
+.row .item-row .item p {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin: 6px;
+    margin-top: 3px;
+    text-indent: 2px;
+}

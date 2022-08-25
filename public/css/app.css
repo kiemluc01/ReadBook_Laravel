@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.content-container,
+.row,
+.row>tr {
+    width: 100%;
+}
