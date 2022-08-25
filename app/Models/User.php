@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cookie;
 
 use function PHPUnit\Framework\isNull;
 
@@ -49,7 +50,10 @@ class User extends Authenticatable
     public function login(String $user,String $pw){
         $user = DB::table('users')->where('name','=',$user)->where('password','=',$pw)->first();
         if(!is_null($user))
+        {
             return True;
+        }
+            
         return False;
     }
 

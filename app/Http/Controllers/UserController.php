@@ -13,7 +13,8 @@ class UserController extends Controller
     public function Login(){
         $user = new  User();
         if($user->Login($_REQUEST['user'],$_REQUEST['pw'])){
-            $js = '<script>
+            $js = '
+                <script>
                     alert("Đăng nhập thành công")
                     location.href = "/Home"
                 </script>';
