@@ -14,16 +14,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.2.8/emojionearea.min.js"></script>
     </head>
     <body >
+    <?php
+        if(empty($user))
+            $href = '/';
+        else
+            $href = '/Home';
+    ?>
         <!-- header -->
         <div class="header">
             <img src="img/book.jpg" alt="logo" class="logo">
             <nav class="menu">
-                <li><a href="">Trang chủ</a></li>
+                <li><a href="<?php echo $href ?>">Trang chủ</a></li>
                 <li><a href="">Danh mục</a></li>
                 <li><a href=""></a>Ngôn ngữ</li>
                 <li><a href=""></a>Trợ giúp</li>
             </nav>
-            @if(url()->current() != 'http://127.0.0.1:8000' && url()->current() != 'http://127.0.0.1:8000/Login' && url()->current() != 'http://127.0.0.1:8000/Register' )
+            @if(isset($user))
             <ul class="member">
                 <li><a href="" style="display:flex"><img src="img/book.jpg" alt=""><span style="line-height:10vh;display:inline-block;margin-left:5px;">{{ $user }}</span></a>
                     <ul class="submenu">

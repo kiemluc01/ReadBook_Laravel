@@ -12,6 +12,7 @@
     padding: 5px;
     margin-top: 5px;
     background-color: aqua;
+    text-indent: 20px;
 }
 
 .row .item-row .item {
@@ -54,4 +55,112 @@
     margin: 6px;
     margin-top: 3px;
     text-indent: 2px;
+}
+
+
+/* detail book */
+
+.row .book-detail {
+    width: 100%;
+    height: auto;
+}
+
+.row .book-detail .main {
+    display: flex;
+    height: 40vh;
+    padding: 50px;
+    padding-bottom: 20px;
+}
+
+.row .book-detail .main .img-book {
+    width: 20%;
+    height: 90%;
+}
+
+.row .book-detail .main .img-book img {
+    height: 100%;
+    width: auto;
+}
+
+.row .book-detail .container-btn {
+    width: auto;
+    padding-left: 80px;
+    padding-bottom: 20px;
+}
+
+.row .book-detail .container-btn a {
+    display: inline-block;
+    text-decoration: none;
+    color: #FFF;
+    background-color: rgb(218, 129, 129);
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 30px;
+    width: auto;
+    line-height: 30px;
+    border-radius: 5px/5px;
+    -webkit-border-radius: 5px/5px;
+    -moz-border-radius: 5px/5px;
+    -ms-border-radius: 5px/5px;
+    -o-border-radius: 5px/5px;
+}
+
+
+/* rate */
+
+.rate-container {
+    padding: 50px;
+    display: flex;
+}
+
+.rate-container .my-rate {
+    width: 40%;
+    height: auto;
+}
+
+.rate-container .all-rate {
+    width: 60%;
+    height: auto;
+}
+
+.rate-container .my-rate form .btnRate {
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 20px;
+    color: #FFF;
+    background-color: rgb(43, 167, 95);
+    border-radius: 10px/10px;
+    -webkit-border-radius: 10px/10px;
+    -moz-border-radius: 10px/10px;
+    -ms-border-radius: 10px/10px;
+    -o-border-radius: 10px/10px;
+}
+
+
+/* row rate  */
+
+.rate-container .all-rate .row-rate {
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.rate-container .all-rate .row-rate .img img {
+    padding: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%/50%;
+    -webkit-border-radius: 50%/50%;
+    -moz-border-radius: 50%/50%;
+    -ms-border-radius: 50%/50%;
+    -o-border-radius: 50%/50%;
+}
+
+.rate-container .all-rate .row-rate .main-rate>h2 {
+    margin-bottom: 3px;
 }
