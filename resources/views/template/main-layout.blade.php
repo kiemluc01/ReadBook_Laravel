@@ -64,7 +64,9 @@
         <!-- end content  -->
 
         <!-- foooter -->
-
+        <div class="row">
+            <p></p>
+        </div>
         <!-- end foooter -->
 
         
