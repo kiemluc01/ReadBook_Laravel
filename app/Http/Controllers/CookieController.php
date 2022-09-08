@@ -12,7 +12,7 @@ class CookieController extends Controller
 
     }
     public function setUser($user){
-        Cookie::queue('user', $user, 1,'/');
+        Cookie::queue('user', $user, 15,'/');
         $c = str(Cookie::get('user'));
         echo '<script>
             alert("'.$c.'")

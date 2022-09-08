@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CookieController;
+use Illuminate\Support\Facades\Cookie;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,19 @@ Route::get('/', function () {
 
 // Trang chủ đã login
 Route::get('/Home', function () {
-    return view('non-static-layout.HomePage-LG');
+    return view('non-static-layout.HomePage-LG',['user' => Cookie::get('user')]);
+});
+//read book
+Route::prefix('/Book')->group(function () {
+    Route::get('/',function(){
+        
+        return view('non-static-layout.detailBook',['user' => Cookie::get('user')]);
+    });
+    Route::get('/Read', function () {
+        if(isset($_REQUEST['id']))
+        $id = $_REQUEST['id'];
+        return view('non-static-layout.Read',['user' => Cookie::get('user'),'idBook' => $id]);
+    });
 });
 //url login
 Route::get('/Login', function () {
@@ -40,3 +53,4 @@ Route::controller(UserController::class)->group(function(){
 Route::controller(CookieController::class)->group(function(){
     Route::get('/SetCookieUser','setUser');
 });
+//run Readbook request

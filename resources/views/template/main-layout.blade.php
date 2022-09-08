@@ -25,7 +25,7 @@
             </nav>
             @if(url()->current() != 'http://127.0.0.1:8000' && url()->current() != 'http://127.0.0.1:8000/Login' && url()->current() != 'http://127.0.0.1:8000/Register' )
             <ul class="member">
-                <li><a href="" style="display:flex"><img src="img/book.jpg" alt=""><span style="line-height:10vh;display:inline-block;margin-left:5px;">Tên người dùng</span></a>
+                <li><a href="" style="display:flex"><img src="img/book.jpg" alt=""><span style="line-height:10vh;display:inline-block;margin-left:5px;">{{ $user }}</span></a>
                     <ul class="submenu">
                         <li><a href="/">Đăng xuất</a></li>
                     </ul>
