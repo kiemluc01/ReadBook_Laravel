@@ -1,8 +1,10 @@
+@extends('.template.main-layout')
+@section('content')
 <div class="row">
     <form action="Login" method="post">
         <table class="login">
             <tr>
-                <th>Đăng nhập</th>
+                <th colspan="2"><h2>Đăng nhập</h2></th>
             </tr>
             <tr>
                 <td>Tên đăng nhập:</td>
@@ -30,3 +32,4 @@
         </table>
     </form>
 </div>
+@endsection

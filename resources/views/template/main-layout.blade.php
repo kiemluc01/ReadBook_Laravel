@@ -31,6 +31,15 @@
                     </ul>
                 </li>
             </ul>
+            @elseif(url()->current() == 'http://127.0.0.1:8000/Login')
+            <style>
+                .header .menu{
+                    width: 50%;
+                }
+            </style>
+            <ul class="login">
+                <li style="margin-right:20px;"><a href="/Register">Đăng Ký</a></li>
+            </ul>
             @else
             <style>
                 .header .menu{

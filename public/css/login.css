@@ -1,4 +1,5 @@
-table.login {
+table.login,
+table.register {
     padding-top: 20vh;
     margin-left: auto;
     margin-right: auto;
