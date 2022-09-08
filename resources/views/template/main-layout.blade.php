@@ -27,7 +27,7 @@
             <ul class="member">
                 <li><a href="" style="display:flex"><img src="img/book.jpg" alt=""><span style="line-height:10vh;display:inline-block;margin-left:5px;">{{ $user }}</span></a>
                     <ul class="submenu">
-                        <li><a href="/">Đăng xuất</a></li>
+                        <li><a href="/Logout">Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>

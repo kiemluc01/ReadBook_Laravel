@@ -27,7 +27,6 @@ Route::get('/Home', function () {
 //read book
 Route::prefix('/Book')->group(function () {
     Route::get('/',function(){
-        
         return view('non-static-layout.detailBook',['user' => Cookie::get('user')]);
     });
     Route::get('/Read', function () {
@@ -51,6 +50,7 @@ Route::controller(UserController::class)->group(function(){
 });
 //run Cookie request
 Route::controller(CookieController::class)->group(function(){
+    Route::get('/Logout','deleteUser');
     Route::get('/SetCookieUser','setUser');
 });
 //run Readbook request

@@ -8,20 +8,20 @@
         <div class="item-row">
             @for($i =1;$i<=5;$i++)
             <a href="/Book" class="item">
-                    <center><img src="img/book.jpg" alt="ảnh"></center>
-                    <h2>Tên Sách</h2>
-                    <h4>Tên tác giả</h4>
-                    <center><p>Mô tả</p></center>
+                <center><img src="img/book.jpg" alt="ảnh"></center>
+                <h2>Tên Sách</h2>
+                <h4>Tên tác giả</h4>
+                <center><p>Mô tả</p></center>
             </a>
             @endfor
         </div>
         <div class="item-row">
             @for($i =1;$i<=2;$i++)
             <a href="/Book" class="item">
-                    <center><img src="img/book.jpg" alt="ảnh"></center>
-                    <h2>Tên Sách</h2>
-                    <h4>Tên tác giả</h4>
-                    <center><p>Mô tả</p></center>
+                <center><img src="img/book.jpg" alt="ảnh"></center>
+                <h2>Tên Sách</h2>
+                <h4>Tên tác giả</h4>
+                <center><p>Mô tả</p></center>
             </a>
             @endfor
         </div>

@@ -13,11 +13,10 @@ class CookieController extends Controller
     }
     public function setUser($user){
         Cookie::queue('user', $user, 15,'/');
-        $c = str(Cookie::get('user'));
-        echo '<script>
-            alert("'.$c.'")
-        </script>';
         return True;
     }
-
+    public function deleteUser(){
+        Cookie::queue('user', '', -1);
+        return redirect('/Login');
+    }
 }
