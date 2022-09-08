@@ -20,14 +20,14 @@
             </tr>
             <input type="hidden" name="_token"  value="<?php echo csrf_token(); ?>">
             <tr>
-                <td>
-                    <input type="submit" value="Đăng nhập" name="btnlogin" id="btnlogin">
+                <td colspan="2">
+                    <center><input type="submit" value="Đăng nhập" name="btnlogin" id="btnlogin"></center>
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <center><td colspan="2">
                     Bạn chưa có tài khoản? <a href="/Register">Đăng kí</a>
-                </td>
+                </td></center>
             </tr>
         </table>
     </form>

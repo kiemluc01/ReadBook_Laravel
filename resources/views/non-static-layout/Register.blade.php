@@ -38,14 +38,16 @@
             </tr>
             <input type="hidden" name="_token"  value="<?php echo csrf_token(); ?>">
             <tr>
-                <td>
-                    <input type="submit" name="btnregister" id="btnregister" value="Đăng kí">
+                <td colspan="2">
+                    <center><input type="submit" name="btnregister" id="btnregister" value="Đăng kí"></center>
                 </td>
             </tr>
             <tr>
+                <center>
                 <td colspan="2">
                     Bạn đã có tài khoản? <a href="/Login">Đăng nhập</a>
                 </td>
+                </center>
             </tr>
         </table>
     </form>

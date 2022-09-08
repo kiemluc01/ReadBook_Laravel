@@ -4,3 +4,21 @@ table.register {
     margin-left: auto;
     margin-right: auto;
 }
+
+#btnlogin,
+#btnregister {
+    height: 30px;
+    width: auto;
+    font-size: 15px;
+    line-height: 30px;
+    border-radius: 5px/5px;
+    border: 1px #000;
+    color: #FFF;
+    background-image: linear-gradient(to bottom left, rgb(55, 202, 235), rgb(129, 179, 224), rgb(58, 204, 131));
+}
+
+th,
+td {
+    height: 30px;
+    line-height: 30px;
+}
