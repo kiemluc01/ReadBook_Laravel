@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\CookieController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,13 +23,20 @@ Route::get('/', function () {
 Route::get('/Home', function () {
     return view('non-static-layout.HomePage-LG');
 });
+//url login
 Route::get('/Login', function () {
     return view('non-static-layout.Login');
 });
+//url register
 Route::get('/Register', function () {
     return view('non-static-layout.Register');
 });
+// run user request
 Route::controller(UserController::class)->group(function(){
     Route::post('/Login','Login');
     Route::post('/Register','Register');
+});
+//run Cookie request
+Route::controller(CookieController::class)->group(function(){
+    Route::get('/SetCookieUser','setUser');
 });

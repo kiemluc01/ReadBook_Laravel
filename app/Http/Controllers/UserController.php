@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Cookie;
+use App\Http\Controllers\CookieController;
 class UserController extends Controller
 {
     //
@@ -13,19 +16,22 @@ class UserController extends Controller
     public function Login(){
         $user = new  User();
         if($user->Login($_REQUEST['user'],$_REQUEST['pw'])){
+            $Cookie = new CookieController();
+            if($Cookie->setUser($_REQUEST['user']))
             $js = '
-                <script>
-                    alert("Đăng nhập thành công")
-                    location.href = "/Home"
-                </script>';
+            <script>
+                alert("Đăng nhập thành công")
+                location.href = "/Home"
+            </script>';
             return $js;
-            // return redirect('/Home');
         }    
-        $js='<script>
+        else{
+            $js = '<script>
                 alert("sai tài khoản hoặc mật khẩu")
                 location.href = "/Login"
             </script>';
-        return $js;
+            return $js;
+        }
     }
     public function Register(){
         if($_REQUEST['pw'] == $_REQUEST['cfpw']){

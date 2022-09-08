@@ -7,12 +7,14 @@
         <h1>Danh mục sách</h1>
         <div class="item-row">
             @for($i =1;$i<=5;$i++)
-            <div class="item">
-                <center><img src="img/book.jpg" alt="ảnh"></center>
-                <h2>Tên Sách</h2>
-                <h4>Tên tác giả</h4>
-                <center><p>mô tả</p></center>
-            </div>
+            <a href="">
+                <div class="item">
+                    <center><img src="img/book.jpg" alt="ảnh"></center>
+                    <h2>Tên Sách</h2>
+                    <h4>Tên tác giả</h4>
+                    <center><p>mô tả</p></center>
+                </div>
+            </a>
             @endfor
         </div>
         <div class="item-row">

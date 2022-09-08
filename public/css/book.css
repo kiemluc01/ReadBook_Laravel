@@ -14,7 +14,12 @@
     background-color: aqua;
 }
 
-.row .item-row .item {
+.row .item-row a {
+    display: block;
+    text-decoration: none;
+}
+
+.row .item-row a .item {
     width: 15%;
     margin: 2%;
     height: 38vh;
@@ -25,26 +30,26 @@
     color: #000;
 }
 
-.row .item-row .item img {
+.row .item-row a .item img {
     width: 70%;
     height: 50%!important;
     margin-left: auto;
     margin-right: auto;
 }
 
-.row .item-row .item h2,
-.row .item-row .item h4,
-.row .item-row .item p {
+.row .item-row a .item h2,
+.row .item-row a .item h4,
+.row .item-row a .item p {
     margin: 0;
     padding: 0;
 }
 
-.row .item-row .item h2,
-.row .item-row .item h4 {
+.row .item-row a .item h2,
+.row .item-row a .item h4 {
     text-align: center;
 }
 
-.row .item-row .item p {
+.row .item-row a .item p {
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
