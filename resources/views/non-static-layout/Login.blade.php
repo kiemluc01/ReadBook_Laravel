@@ -2,7 +2,7 @@
     <form action="Login" method="post">
         <table class="login">
             <tr>
-                <th>ĐĂng nhập</th>
+                <th>Đăng nhập</th>
             </tr>
             <tr>
                 <td>Tên đăng nhập:</td>
@@ -23,7 +23,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td colspan="2">
                     Bạn chưa có tài khoản? <a href="/Register">Đăng kí</a>
                 </td>
             </tr>

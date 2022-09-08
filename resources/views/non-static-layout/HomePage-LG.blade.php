@@ -11,7 +11,7 @@
                 <center><img src="img/book.jpg" alt="ảnh"></center>
                 <h2>Tên Sách</h2>
                 <h4>Tên tác giả</h4>
-                <p>mô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tả</p>
+                <center><p>mô tả</p></center>
             </div>
             @endfor
         </div>
@@ -21,7 +21,7 @@
                 <center><img src="img/book.jpg" alt="ảnh"></center>
                 <h2>Tên Sách</h2>
                 <h4>Tên tác giả</h4>
-                <p>mô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tảmô tả</p>
+                <center><p>mô tả</p></center>
             </div>
             @endfor
         </div>
