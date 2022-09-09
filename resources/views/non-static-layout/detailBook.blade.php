@@ -9,7 +9,7 @@
             <div class="news-book">
                 <h1>Tên sách</h1>
                 <p><strong>tên tác giả</strong></p>
-                <input type="checkbox" name="rate" id="rate">
+                <i class="icon fa fa-eye">1000</i>
                 <hr>
                 <span>Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider</span>
             </div>
@@ -44,16 +44,31 @@
         <hr>
         <div class="all-rate">
             @for($i=1;$i<=10;$i++)
-            <div class="row-rate">
+            <div class="row-rate" id="cmt{{ $i }}">
                 <div class="img">
                     <img src="img/live-search.png" alt="" class="avt">
                 </div>
                 <div class="main-rate">
-                    <h2>tên nì</h2>
-                    <span>còn ni là cmt nì</span>
+                    <h2>Nguyễn Kiêm Lực</h2>
+                    <span>hđỉnh của chóp :D</span>
+                    <center>
+                        <div class="tool">
+                            <label class="like">
+                                <i class="icon fa fa-thumbs-up"></i>
+                                <a href="#cmt{{ $i }}">like</a>
+                            </label>
+                            <label class="comment" id="">
+                                <i class="icon fa fa-comment"></i>
+                                <a href="#cmt{{ $i }}">reply</a>
+                            </label>
+                            <label class="delete" id="">
+                                <i class="icon fa fa-trash"></i>
+                                <a href="#cmt{{ $i }}">delete</a>
+                            </label>
+                        </div>
+                    </center>
                 </div>
             </div>
-            <hr>
             @endfor
         </div>
     </div>

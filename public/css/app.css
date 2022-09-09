@@ -1,6 +1,17 @@
+@font-face {
+    font-family: main;
+    src: url('../font/PublicSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: mainLight;
+    src: url('../font/PublicSans-Light.ttf');
+}
+
 body {
     margin: 0;
     padding: 0;
+    font-family: main;
 }
 
 .content-container,

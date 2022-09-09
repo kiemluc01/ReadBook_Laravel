@@ -92,7 +92,7 @@
     display: inline-block;
     text-decoration: none;
     color: #FFF;
-    background-color: rgb(218, 129, 129);
+    background-color: rgb(255, 152, 152);
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
@@ -115,12 +115,12 @@
 }
 
 .rate-container .my-rate {
-    width: 35%;
+    width: 30%;
     height: auto;
 }
 
 .rate-container .all-rate {
-    width: 50%;
+    width: 60%;
     height: 50vh;
     overflow-X: auto;
 }
@@ -145,14 +145,23 @@
 /* row rate  */
 
 .rate-container .all-rate .row-rate {
-    padding: 20px;
-    width: AUTO;
+    padding: 0px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    width: 80%;
     height: auto;
     display: flex;
+    background-color: rgb(236, 236, 236);
+    color: #000;
+    border-radius: 10px/10px;
+    -webkit-border-radius: 10px/10px;
+    -moz-border-radius: 10px/10px;
+    -ms-border-radius: 10px/10px;
+    -o-border-radius: 10px/10px;
 }
 
 .rate-container .all-rate .row-rate .img img {
-    padding: 20px;
+    padding: 10px;
     width: 60px;
     height: 60px;
     border-radius: 50%/50%;
@@ -162,6 +171,45 @@
     -o-border-radius: 50%/50%;
 }
 
+.rate-container .all-rate .row-rate .main-rate {
+    width: 80%;
+}
+
 .rate-container .all-rate .row-rate .main-rate>h2 {
     margin-bottom: 3px;
+    margin-top: 10px;
+}
+
+.rate-container .all-rate .row-rate .main-rate center .tool {
+    width: 80%;
+    display: flex;
+}
+
+.rate-container .all-rate .row-rate .main-rate center .tool label {
+    width: 30%;
+    margin-left: 5px;
+}
+
+
+/* 
+input {
+    -webkit-appearance: none;
+    visibility: none;
+    display: none;
+} */
+
+input::cheked>span {
+    color: rgb(14, 135, 235);
+}
+
+.tool label a {
+    text-decoration: none;
+    color: #000;
+    font-family: mainLight;
+}
+
+.tool label a:hover {
+    color: rgb(87, 174, 196);
+    font-size: 20px;
+    position: absolute;
 }
