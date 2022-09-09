@@ -59,7 +59,7 @@
                             </label>
                             <label class="comment" id="">
                                 <i class="icon fa fa-comment"></i>
-                                <a href="#cmt{{ $i }}">reply</a>
+                                <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
                             </label>
                             <label class="delete" id="">
                                 <i class="icon fa fa-trash"></i>
@@ -69,6 +69,10 @@
                     </center>
                 </div>
             </div>
+            <form method="post" class="rowReply" id="reply{{ $i }}">
+                <input type="text" name="rep" id="">
+                <input type="submit" value="gữi">
+            </form>
             @endfor
         </div>
     </div>

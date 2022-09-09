@@ -209,7 +209,6 @@ input::cheked>span {
 }
 
 .tool label a:hover {
-    color: rgb(87, 174, 196);
-    font-size: 20px;
+    color: rgb(0, 92, 212);
     position: absolute;
 }
