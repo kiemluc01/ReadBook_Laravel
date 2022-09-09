@@ -36,13 +36,14 @@
         <div class="my-rate">
             <form action="/Rate" method="post">
                 <h2>Đánh giá </h2>
-                <textarea name="rateText" id="rataeText" cols="50" rows="10" placeholder="nhập đánh giá của bạn..."></textarea>
+                <textarea name="rateText" id="rataeText" cols="35" rows="10" placeholder="nhập đánh giá của bạn..."></textarea>
                 <br>
                 <input type="submit" value="Gửi" id="btnRate" class="btnRate">
             </form>
         </div>
         <hr>
         <div class="all-rate">
+            @for($i=1;$i<=10;$i++)
             <div class="row-rate">
                 <div class="img">
                     <img src="img/live-search.png" alt="" class="avt">
@@ -52,6 +53,8 @@
                     <span>còn ni là cmt nì</span>
                 </div>
             </div>
+            <hr>
+            @endfor
         </div>
     </div>
 </div>
