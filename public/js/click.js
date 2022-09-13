@@ -1,5 +1,9 @@
 $(document).ready(function() {
-    $('show/hide').click(function() {
-        // if(document.getElementById('pw').style.type)
+
+
+    $('.reply').click(function() {
+        var id = this.getAttribute('rep')
+        document.getElementById(id).style.display = 'flex'
     })
+
 })

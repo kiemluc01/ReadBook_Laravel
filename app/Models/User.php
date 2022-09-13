@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     //login
     public function login(String $user,String $pw){
-        $user = DB::table('users')->where('name','=',$user)->where('password','=',$pw)->first();
+        $user = DB::table('tblaccount')->where('user','=',$user)->where('password','=',$pw)->first();
         if(!is_null($user))
         {
             return True;
@@ -65,5 +65,9 @@ class User extends Authenticatable
         ))
             return True;
         return False;
+    }
+    public function getName($user){
+        $name = DB::table('tblaccount')->where('username','=',$user)->get();
+        return $name->get('MemberName');
     }
 }

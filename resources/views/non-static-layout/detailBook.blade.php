@@ -45,34 +45,45 @@
         <div class="all-rate">
             @for($i=1;$i<=10;$i++)
             <div class="row-rate" id="cmt{{ $i }}">
-                <div class="img">
-                    <img src="img/live-search.png" alt="" class="avt">
+                <div class="main">
+                    <div class="img">
+                        <img src="img/live-search.png" alt="" class="avt">
+                    </div>
+                    <div class="main-rate">
+                        <h2>Nguyễn Kiêm Lực</h2>
+                        <span>hđỉnh của chóp :D</span>
+                        <center>
+                            <div class="tool">
+                                <label class="like">
+                                    <i class="icon fa fa-thumbs-up"></i>
+                                    <a href="#cmt{{ $i }}">like</a>
+                                </label>
+                                <label class="comment" id="">
+                                    <i class="icon fa fa-comment"></i>
+                                    <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
+                                </label>
+                                <label class="delete" id="">
+                                    <i class="icon fa fa-trash"></i>
+                                    <a href="#cmt{{ $i }}">delete</a>
+                                </label>
+                            </div>
+                        </center>
+                    </div>
                 </div>
-                <div class="main-rate">
-                    <h2>Nguyễn Kiêm Lực</h2>
-                    <span>hđỉnh của chóp :D</span>
-                    <center>
-                        <div class="tool">
-                            <label class="like">
-                                <i class="icon fa fa-thumbs-up"></i>
-                                <a href="#cmt{{ $i }}">like</a>
-                            </label>
-                            <label class="comment" id="">
-                                <i class="icon fa fa-comment"></i>
-                                <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
-                            </label>
-                            <label class="delete" id="">
-                                <i class="icon fa fa-trash"></i>
-                                <a href="#cmt{{ $i }}">delete</a>
-                            </label>
-                        </div>
-                    </center>
+                <form method="post" class="rowReply" id="reply{{ $i }}">
+                    <div class="avt-rep">
+                        <img src="img/live-search.png" alt="avt reply">
+                    </div>
+                    <div class="content-reply">
+                        <input type="text" name="rep{{ $i }}" id="" placeholder="nhập câu trả lời của bạn">
+                        <input type="submit" value="gữi">
+                    </div>
+                </form>
+                <div class="row-rep">
+                    
                 </div>
             </div>
-            <form method="post" class="rowReply" id="reply{{ $i }}">
-                <input type="text" name="rep" id="">
-                <input type="submit" value="gữi">
-            </form>
+            
             @endfor
         </div>
     </div>
