@@ -32,9 +32,25 @@
                 <li><a href=""></a>Ngôn ngữ</li>
                 <li><a href=""></a>Trợ giúp</li>
             </nav>
+            
             @if(isset($user))
+            @php
+                $mem = App\Http\Controllers\UserController::getName($user);
+            @endphp
             <ul class="member">
-                <li><a href="" style="display:flex"><img src="img/book.jpg" alt=""><span style="line-height:10vh;display:inline-block;margin-left:5px;">{{ $user }}</span></a>
+                <li>
+                    <a href="" style="display:flex">
+                        <img src="img/book.jpg" alt="">
+                        <span style="line-height:10vh;display:inline-block;margin-left:5px;">
+                            @foreach($mem as $name)  
+                                @if($name->MemberName != NULL) 
+                                    {{$name->MemberName;}}  
+                                @else 
+                                    {{ "chưa đặt tên"; }} 
+                                @endif  
+                            @endforeach
+                        </span>
+                    </a>
                     <ul class="submenu">
                         <li><a href="/Logout">Đăng xuất</a></li>
                     </ul>

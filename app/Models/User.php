@@ -22,7 +22,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'id',
+        'fullname',
+        'DoB',
+        'username',
         'email',
         'password',
     ];
@@ -48,7 +51,7 @@ class User extends Authenticatable
 
     //login
     public function login(String $user,String $pw){
-        $user = DB::table('tblaccount')->where('user','=',$user)->where('password','=',$pw)->first();
+        $user = DB::table('tblaccount')->where('username','=',$user)->where('password','=',$pw)->first();
         if(!is_null($user))
         {
             return True;
@@ -68,6 +71,6 @@ class User extends Authenticatable
     }
     public function getName($user){
         $name = DB::table('tblaccount')->where('username','=',$user)->get();
-        return $name->get('MemberName');
+        return $name;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Book;
 
 class BookController extends Controller
 {
@@ -18,7 +19,8 @@ class BookController extends Controller
     }
     //get book in category
     public function getBookCat($IDcat){
-        $book = DB::table('tblsach')->where('idDanhmuc','=',$IDcat)->get();
-        return $book;
+        $book = new Book();
+        $books = $book->getBook($IDcat);
+        return $books;
     }
 }
