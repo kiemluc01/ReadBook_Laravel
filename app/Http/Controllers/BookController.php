@@ -13,12 +13,13 @@ class BookController extends Controller
 
     }
     //get all the book
-    public function getAll(){
-        $book = DB::table('tblsach')->get();
-        return $book;
+    public static function getCat(){
+        $book = new Book();
+        $cat = $book->getCat();
+        return $cat;
     }
     //get book in category
-    public function getBookCat($IDcat){
+    public static function getBookCat($IDcat){
         $book = new Book();
         $books = $book->getBook($IDcat);
         return $books;

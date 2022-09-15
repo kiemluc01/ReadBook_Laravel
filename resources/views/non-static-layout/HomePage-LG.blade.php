@@ -12,31 +12,35 @@
 ?>
 <div class="content-container">
     <!-- row  -->
-    @for($a =1;$a<=5;$a++)
+    @php
+        $cats = App\Http\Controllers\BookController::getCat();
+    @endphp
+    @foreach($cats as $cat)
     <div class="row">
-        <h1>Danh mục sách</h1>
+        <h1>{{ $cat->Tendanhmuc }}</h1>
         <div class="item-row">
-            @for($i =1;$i<=5;$i++)
-            <a href="/Book?id=1" class="item">
-                    <center><img src="img/book.jpg" alt="ảnh"></center>
-                    <h2>Tên Sách</h2>
-                    <h4>Tên tác giả</h4>
-                    <center><p>Mô tả</p></center>
-            </a>
-            @endfor
+        @php
+            $books = App\Http\Controllers\BookController::getBookCat($cat->idDanhmuc);
+            $i = 1;
+        @endphp 
+            @foreach($books as $book)
+                <a href="/Book?id=1" class="item">
+                        <div class="img">
+                            <img src="{{ $book->imgSach; }}" alt="ảnh">
+                        </div>
+                        <h5>{{ $book->Tensach; }}</h5>
+                        <h6> {{ $book->Tacgia; }} </h5>
+                        <center><p>{{ $book->TomtatND; }}</p></center>
+                </a>
+                @php $i++; @endphp
+                @if($i == 6)
         </div>
         <div class="item-row">
-            @for($i =1;$i<=2;$i++)
-            <a href="/Book?id=1" class="item">
-                    <center><img src="img/book.jpg" alt="ảnh"></center>
-                    <h2>Tên Sách</h2>
-                    <h4>Tên tác giả</h4>
-                    <center><p>Mô tả</p></center>
-            </a>
-            @endfor
+                @endif
+            @endforeach
         </div>
     </div>
-    @endfor 
+    @endforeach
     <!-- end row  -->
 </div>
 
