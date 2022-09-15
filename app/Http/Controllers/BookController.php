@@ -24,4 +24,9 @@ class BookController extends Controller
         $books = $book->getBook($IDcat);
         return $books;
     }
+
+    public static function check($cat){
+        $book = new Book();
+        return $book->check($cat);
+    }
 }

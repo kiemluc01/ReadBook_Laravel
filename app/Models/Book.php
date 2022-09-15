@@ -7,6 +7,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 class Book extends Model
 {
@@ -31,5 +32,12 @@ class Book extends Model
     public function getBook($cat){
         $book = DB::table('tblsach')->join('chitietsach','tblsach.idSach','=','chitietsach.idSach')->where('idDanhmuc','=',$cat)->get();
         return $book;
+    }
+
+    public function check($cat){
+        $book = DB::table('tblsach')->where('idDanhmuc','=',$cat)->get();
+        if($book != NULL)
+            return True;
+        return False;
     }
 }
