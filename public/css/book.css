@@ -47,22 +47,27 @@
 .row .item-row .item p {
     margin: 0;
     padding: 0;
+    margin-top: 10px;
 }
 
 .row .item-row .item h5,
 .row .item-row .item h6 {
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .row .item-row .item p {
     font-size: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     margin: 6px;
-    margin-top: 10px;
     text-indent: 2px;
     font-weight: lighter;
 }

@@ -1,5 +1,6 @@
 @extends('..template.main-layout')
 @section('content')
+
 <div class="row">
     <div class="book-detail">
         <div class="main">
@@ -23,9 +24,11 @@
     <div class="item-row">
         @for($i =1;$i<=5;$i++)
         <a href="/Book?id=1" class="item">
-            <center><img src="img/book.jpg" alt="ảnh"></center>
-            <h2>Tên Sách</h2>
-            <h4>Tên tác giả</h4>
+            <div class="img">
+                <img src="img/book.jpg" alt="ảnh">
+            </div>
+            <h5>Tên Sách</h5>
+            <h6>Tên tác giả</h6>
             <center><p>Mô tả</p></center>
         </a>
         @endfor
