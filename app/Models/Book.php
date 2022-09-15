@@ -34,10 +34,23 @@ class Book extends Model
         return $book;
     }
 
+    //check book in cat
     public function check($cat){
         $book = DB::table('tblsach')->where('idDanhmuc','=',$cat)->get();
         if($book != NULL)
             return True;
         return False;
+    }
+
+    //get cur book
+    public function CurrentBook($idBook){
+        $book = DB::table('tblsach')->join('chitietsach','tblsach.idSach','=','chitietsach.idSach')->join('tblfavorite','tblsach.idSach','=','tblfavorite.idSach')->join('tbldanhgia','tblsach.idSach','=','tbldanhgia.idSach')->where('tblsach.idSach',$idBook)->get();
+        return $book;
+    }
+
+    //get books relate
+    public function BookRelate($idCat,$idBook){
+        $book = DB::table('tblsach')->join('chitietsach','tblsach.idSach','=','chitietsach.idSach')->where('idDanhmuc','=',$idCat)->where('tblsach.idSach','!=',$idBook)->get();
+        return $book;
     }
 }

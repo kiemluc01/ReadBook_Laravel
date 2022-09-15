@@ -1,37 +1,57 @@
 @extends('..template.main-layout')
 @section('content')
-
+@php
+    $book = App\Http\Controllers\Bookcontroller::CurrentBook($_REQUEST['id']);
+    $idCat ='';
+@endphp
 <div class="row">
+    @foreach($book as $b)
+        @php
+            $idCat = $b->idDanhmuc;
+        @endphp
     <div class="book-detail">
         <div class="main">
             <div class="img-book">
                 <img src="img/book.jpg" alt="ảnh của cuốn sách nè">
             </div>
             <div class="news-book">
-                <h1>Tên sách</h1>
-                <p><strong>tên tác giả</strong></p>
+                <h1> {{ $b->Tensach }} </h1>
+                <p><strong>{{ $b->Tacgia }}</strong></p>
                 <i class="icon fa fa-eye">1000</i>
                 <hr>
-                <span>Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider Cảm ơn bạn. Mình muốn nó trên tất cả các url của web nên mình dùng view share trong appProvider</span>
+                <span>{{ $b->TomtatND }}</span>
             </div>
         </div>
         <div class="container-btn">
             <a href="/Book/Read?id=<?php echo $_REQUEST['id']; ?>"><strong>Đọc</strong></a>
         </div>
     </div>
+        @break;
+    @endforeach
     <hr>
+    <!-- Books relate to cur book -->
     <h1>SÁCH LIÊN QUAN</h1>
+    @php
+        $books = App\Http\Controllers\Bookcontroller::BookRelate($idCat,$_REQUEST['id']);
+        $i=0;
+    @endphp
     <div class="item-row">
-        @for($i =1;$i<=5;$i++)
-        <a href="/Book?id=1" class="item">
-            <div class="img">
-                <img src="img/book.jpg" alt="ảnh">
-            </div>
-            <h5>Tên Sách</h5>
-            <h6>Tên tác giả</h6>
-            <center><p>Mô tả</p></center>
-        </a>
-        @endfor
+        @foreach($books as $bookRL)
+            @php
+                $i++;
+            @endphp
+            <a href="/Book?id={{ $bookRL->idSach }}" class="item">
+                <div class="img">
+                    <img src="{{ $bookRL->imgSach }}" alt="ảnh">
+                </div>
+                <h5>{{ $bookRL->Tensach }}</h5>
+                <h6>{{ $bookRL->Tacgia }}</h6>
+                <center><p>{{ $bookRL->TomtatND }}</p></center>
+            </a>
+            @if($i == 5)
+                @break;
+            @endif
+        @endforeach
     </div>
     <hr>
     <h1>ĐÁNH GIÁ</h1>
@@ -46,7 +66,9 @@
         </div>
         <hr>
         <div class="all-rate">
-            @for($i=1;$i<=10;$i++)
+            @php $i =0; @endphp
+            @foreach($book as $cmt)
+            @php $i++; @endphp
             <div class="row-rate" id="cmt{{ $i }}">
                 <div class="main">
                     <div class="img">

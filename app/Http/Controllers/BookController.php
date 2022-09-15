@@ -25,8 +25,22 @@ class BookController extends Controller
         return $books;
     }
 
+    //check book in cat
     public static function check($cat){
         $book = new Book();
         return $book->check($cat);
+    }
+
+    //get cur book
+    public static function CurrentBook($idBook){
+        $book = new Book();
+        return $book->CurrentBook($idBook);
+    }
+
+    //get book relate
+    public static function BookRelate($IDcat,$idBook){
+        $book = new Book();
+        $books = $book->BookRelate($IDcat,$idBook);
+        return $books;
     }
 }
