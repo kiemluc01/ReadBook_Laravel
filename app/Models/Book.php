@@ -29,7 +29,7 @@ class Book extends Model
 
     //get book in category
     public function getBook($cat){
-        $book = DB::table('tblsach')->join('chitietsach','tblsach.idSach','=','chitietsach.idSach')->join('tblfavorite','tblsach.idSach','=','tblfavorite.idSach')->where('idDanhmuc','=',$cat)->get();
+        $book = DB::table('tblsach')->join('chitietsach','tblsach.idSach','=','chitietsach.idSach')->where('idDanhmuc','=',$cat)->get();
         return $book;
     }
 }

@@ -2,31 +2,42 @@
 @section('content')
 <div class="content-container">
     <!-- row  -->
-    @for($a =1;$a<=5;$a++)
-    <div class="row">
-        <h1>Danh mục sách</h1>
-        <div class="item-row">
-            @for($i =1;$i<=5;$i++)
-            <a href="/Book?id=1" class="item">
-                <center><img src="img/book.jpg" alt="ảnh"></center>
-                <h2>Tên Sách</h2>
-                <h4>Tên tác giả</h4>
-                <center><p>Mô tả</p></center>
-            </a>
-            @endfor
-        </div>
-        <div class="item-row">
-            @for($i =1;$i<=2;$i++)
-            <a href="/Book?id=1" class="item">
-                <center><img src="img/book.jpg" alt="ảnh"></center>
-                <h2>Tên Sách</h2>
-                <h4>Tên tác giả</h4>
-                <center><p>Mô tả</p></center>
-            </a>
-            @endfor
-        </div>
-    </div>
-    @endfor 
+    @php
+        $cats = App\Http\Controllers\BookController::getCat();
+    @endphp
+    @foreach($cats as $cat)
+        @php
+            $books = App\Http\Controllers\BookController::getBookCat($cat->idDanhmuc);
+        @endphp
+        @foreach($books as $bookcheck)
+            @if($bookcheck->Tensach != NULL)
+                <div class="row">
+                    <h1>{{ $cat->Tendanhmuc }}</h1>
+                    <div class="item-row">
+                    @php
+                        $i = 1;
+                    @endphp 
+                        @foreach($books as $book)
+                            <a href="/Book?id={{ $book->idSach; }}" class="item">
+                                    <div class="img">
+                                        <img src="{{ $book->imgSach; }}" alt="ảnh">
+                                    </div>
+                                    <h5>{{ $book->Tensach; }}</h5>
+                                    <h6> {{ $book->Tacgia; }} </h5>
+                                    <center><p>{{ $book->TomtatND; }}</p></center>
+                            </a>
+                            @php $i++; @endphp
+                            @if($i > 5)
+                    </div>
+                    <div class="item-row">
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+            @break;
+        @endforeach
+    @endforeach
     <!-- end row  -->
 </div>
 @endsection

@@ -28,7 +28,7 @@
                         $i = 1;
                     @endphp 
                         @foreach($books as $book)
-                            <a href="/Book?id=1" class="item">
+                            <a href="/Book?id={{ $book->idSach; }}" class="item">
                                     <div class="img">
                                         <img src="{{ $book->imgSach; }}" alt="ảnh">
                                     </div>
