@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CookieController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Cookie;
 /*
 |--------------------------------------------------------------------------
@@ -53,4 +54,8 @@ Route::controller(CookieController::class)->group(function(){
     Route::get('/Logout','deleteUser');
     Route::get('/SetCookieUser','setUser');
 });
-//run Readbook request
+//run book request
+Route::controller(BookController::class)->group(function(){
+    Route::get('/delete','delcmt');
+    Route::post('/Rate','rate');
+});

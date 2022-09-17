@@ -43,4 +43,18 @@ class BookController extends Controller
         $books = $book->BookRelate($IDcat,$idBook);
         return $books;
     }
+
+    //del cmt
+    public function delcmt(){
+        $book = new Book();
+        if($book->delcmt($_REQUEST['idcmt']))
+            return redirect('/Book?id='.$_REQUEST['idB'].'#cmt');
+    }
+
+    public function rate(){
+        $book = new Book();
+        if($book->Rate($_REQUEST['id'],$_REQUEST['idm'],$_REQUEST['rateText']))
+            return redirect('/Book?id='.$_REQUEST['id'].'#cmt');
+        return redirect(url()->current());
+    }
 }

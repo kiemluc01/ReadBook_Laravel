@@ -44,7 +44,7 @@ class Book extends Model
 
     //get cur book
     public function CurrentBook($idBook){
-        $book = DB::table('tblsach')->join('chitietsach','tblsach.idSach','=','chitietsach.idSach')->join('tblfavorite','tblsach.idSach','=','tblfavorite.idSach')->join('tbldanhgia','tblsach.idSach','=','tbldanhgia.idSach')->where('tblsach.idSach',$idBook)->get();
+        $book = DB::table('tblsach')->join('chitietsach','tblsach.idSach','=','chitietsach.idSach')->join('tblfavorite','tblsach.idSach','=','tblfavorite.idSach')->join('tbldanhgia','tblsach.idSach','=','tbldanhgia.idSach')->where('tblsach.idSach',$idBook)->orderBy('idDanhgia','desc')->get();
         return $book;
     }
 
@@ -52,5 +52,19 @@ class Book extends Model
     public function BookRelate($idCat,$idBook){
         $book = DB::table('tblsach')->join('chitietsach','tblsach.idSach','=','chitietsach.idSach')->where('idDanhmuc','=',$idCat)->where('tblsach.idSach','!=',$idBook)->get();
         return $book;
+    }
+
+    //delete cmt
+    public function delcmt($id){
+        if(DB::delete('delete from tbldanhgia where idDanhgia = ?',[$id]))
+            return True;
+        return False;
+    }
+
+    //cmt
+    public function Rate($idB,$idm,$nd){
+        if(DB::table('tbldanhgia')->insert(['idMember' => $idm, 'idSach' => $idB, 'Noidung' => $nd]))
+            return True;
+        return False;
     }
 }

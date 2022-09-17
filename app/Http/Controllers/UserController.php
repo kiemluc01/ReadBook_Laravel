@@ -59,4 +59,8 @@ class UserController extends Controller
         $user = new User();
         return $user->getName($id);
     }
+    public static function getID($user){
+        $user = new User();
+        return $user->getID($user);
+    }
 }

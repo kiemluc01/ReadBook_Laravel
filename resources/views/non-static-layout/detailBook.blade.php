@@ -3,12 +3,22 @@
 @php
     $book = App\Http\Controllers\Bookcontroller::CurrentBook($_REQUEST['id']);
     $idCat ='';
+    $idmem = '';
+    if(isset($user)){
+        $idmem = App\Http\Controllers\UserController::getID($user);
+    }  
+    $idb ='';      
 @endphp
+
+
 <div class="row">
     @foreach($book as $b)
         @php
             $idCat = $b->idDanhmuc;
+            $idb = $b->idSach;
         @endphp
+
+    
     <div class="book-detail">
         <div class="main">
             <div class="img-book">
@@ -57,59 +67,78 @@
     <h1>ĐÁNH GIÁ</h1>
     <div class="rate-container">
         <div class="my-rate">
-            <form action="/Rate" method="post">
+            <form action="/Rate" method="post" >
                 <h2>Đánh giá </h2>
-                <textarea name="rateText" id="rataeText" cols="35" rows="10" placeholder="nhập đánh giá của bạn..."></textarea>
+                <textarea name="rateText" id="rateText" cols="35" rows="10" placeholder="nhập đánh giá của bạn..."></textarea>
                 <br>
+                <input type="text" name="id" id="idB" value="{{ $idb }}" hidden>
+                <input type="text" name="idmem" id="idmem" hidden value="{{ $idmem }}">
                 <input type="submit" value="Gửi" id="btnRate" class="btnRate">
+                
             </form>
         </div>
         <hr>
-        <div class="all-rate">
+        <div class="all-rate" id="cmt">
             @php $i =0; @endphp
             @foreach($book as $cmt)
-            @php $i++; @endphp
-            <div class="row-rate" id="cmt{{ $i }}">
-                <div class="main">
-                    <div class="img">
-                        <img src="img/live-search.png" alt="" class="avt">
+                @php 
+                    $i++; 
+                    $member = App\Http\Controllers\UserController::getName($cmt->idMember);
+                    $u = '';
+                @endphp
+                
+                <div class="row-rate" id="cmt{{ $i }}">
+                    <div class="main">
+                        <div class="img">
+                            <img src="img/live-search.png" alt="" class="avt">
+                        </div>
+                        <div class="main-rate">
+                            @foreach($member as $m)
+                                @if($m->MemberName != NULL)
+                                    <h2>{{ $m->MemberName; }}</h2>
+                                @else
+                                    <h2>Chưa đặt tên</h2>
+                                @endif
+                                @php $u = $m->username @endphp
+                            @endforeach
+                            
+                            <span> {{ $cmt->Noidung }} </span>
+                            <center>
+                                <div class="tool">
+                                    <label class="like">
+                                        <i class="icon fa fa-thumbs-up"></i>
+                                        <a href="#cmt{{ $i }}">like</a>
+                                    </label>
+                                    <label class="comment" id="">
+                                        <i class="icon fa fa-comment"></i>
+                                        <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
+                                    </label>
+                                    @if(isset($user))
+                                        @if($u == $user)
+                                    <label class="delete" id="">
+                                        <i class="icon fa fa-trash"></i>
+                                        <a href="/delete?idB={{ $cmt->idSach }}&idcmt={{ $cmt->idDanhgia }}">delete</a>
+                                    </label>
+                                        @endif
+                                    @endif
+                                </div>
+                            </center>
+                        </div>
                     </div>
-                    <div class="main-rate">
-                        <h2>Nguyễn Kiêm Lực</h2>
-                        <span>hđỉnh của chóp :D</span>
-                        <center>
-                            <div class="tool">
-                                <label class="like">
-                                    <i class="icon fa fa-thumbs-up"></i>
-                                    <a href="#cmt{{ $i }}">like</a>
-                                </label>
-                                <label class="comment" id="">
-                                    <i class="icon fa fa-comment"></i>
-                                    <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
-                                </label>
-                                <label class="delete" id="">
-                                    <i class="icon fa fa-trash"></i>
-                                    <a href="#cmt{{ $i }}">delete</a>
-                                </label>
-                            </div>
-                        </center>
+                    <form method="post" class="rowReply" id="reply{{ $i }}">
+                        <div class="avt-rep">
+                            <img src="img/live-search.png" alt="avt reply">
+                        </div>
+                        <div class="content-reply">
+                            <input type="text" name="rep{{ $i }}" id="" placeholder="nhập câu trả lời của bạn">
+                            <input type="submit" value="gữi">
+                        </div>
+                    </form>
+                    <div class="row-rep">
+                        
                     </div>
                 </div>
-                <form method="post" class="rowReply" id="reply{{ $i }}">
-                    <div class="avt-rep">
-                        <img src="img/live-search.png" alt="avt reply">
-                    </div>
-                    <div class="content-reply">
-                        <input type="text" name="rep{{ $i }}" id="" placeholder="nhập câu trả lời của bạn">
-                        <input type="submit" value="gữi">
-                    </div>
-                </form>
-                <div class="row-rep">
-                    
-                </div>
-            </div>
-            
-            @endfor
+            @endforeach
         </div>
     </div>
 </div>
