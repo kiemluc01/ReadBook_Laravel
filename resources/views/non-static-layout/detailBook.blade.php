@@ -71,9 +71,11 @@
                 <h2>Đánh giá </h2>
                 <textarea name="rateText" id="rateText" cols="35" rows="10" placeholder="nhập đánh giá của bạn..."></textarea>
                 <br>
-                <input type="text" name="id" id="idB" value="{{ $idb }}" hidden>
-                <input type="text" name="idmem" id="idmem" hidden value="{{ $idmem }}">
+                
                 <input type="submit" value="Gửi" id="btnRate" class="btnRate">
+                <input type="text" name="id" id="idB" value="{{ $idb }}" hidden>
+                <input type="text" name="idm" id="idm" hidden value="{{ $idmem }}">
+                <input type="hidden" name="_token"  value="<?php echo csrf_token(); ?>">
                 
             </form>
         </div>
@@ -131,6 +133,9 @@
                         </div>
                         <div class="content-reply">
                             <input type="text" name="rep{{ $i }}" id="" placeholder="nhập câu trả lời của bạn">
+                            <input type="text" name="id" id="idB" value="{{ $idb }}" hidden>
+                            <input type="text" name="idmem" id="idmem" hidden value="{{ $idmem }}">
+                            <input type="hidden" name="_token"  value="<?php echo csrf_token(); ?>">
                             <input type="submit" value="gữi">
                         </div>
                     </form>
