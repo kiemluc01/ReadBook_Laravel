@@ -35,7 +35,7 @@
             
             @if(isset($user))
             @php
-                $mem = App\Http\Controllers\UserController::getName($user);
+                $mem = App\Http\Controllers\UserController::getMem($user);
             @endphp
             <ul class="member">
                 <li>

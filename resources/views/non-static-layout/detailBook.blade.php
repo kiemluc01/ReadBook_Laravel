@@ -4,11 +4,17 @@
     $book = App\Http\Controllers\Bookcontroller::CurrentBook($_REQUEST['id']);
     $idCat ='';
     $idmem = '';
-    if(isset($user)){
-        $idmem = App\Http\Controllers\UserController::getID($user);
-    }  
+    
     $idb ='';      
 @endphp
+@if(isset($user))
+    @php
+        $mem = App\Http\Controllers\UserController::getMem($user); 
+    @endphp
+    @foreach($mem as $mm)
+        @php $idmem = $mm->idMember; @endphp
+    @endforeach
+@endif 
 
 
 <div class="row">
@@ -81,69 +87,87 @@
         </div>
         <hr>
         <div class="all-rate" id="cmt">
-            @php $i =0; @endphp
-            @foreach($book as $cmt)
-                @php 
-                    $i++; 
-                    $member = App\Http\Controllers\UserController::getName($cmt->idMember);
-                    $u = '';
-                @endphp
+            @php 
+                $cmts = App\Http\Controllers\BookController::getCmt($_REQUEST['id']);
+                $i =0; 
+                $check = FALSE;
                 
-                <div class="row-rate" id="cmt{{ $i }}">
-                    <div class="main">
-                        <div class="img">
-                            <img src="img/live-search.png" alt="" class="avt">
-                        </div>
-                        <div class="main-rate">
-                            @foreach($member as $m)
-                                @if($m->MemberName != NULL)
-                                    <h2>{{ $m->MemberName; }}</h2>
-                                @else
-                                    <h2>Chưa đặt tên</h2>
-                                @endif
-                                @php $u = $m->username @endphp
-                            @endforeach
-                            
-                            <span> {{ $cmt->Noidung }} </span>
-                            <center>
-                                <div class="tool">
-                                    <label class="like">
-                                        <i class="icon fa fa-thumbs-up"></i>
-                                        <a href="#cmt{{ $i }}">like</a>
-                                    </label>
-                                    <label class="comment" id="">
-                                        <i class="icon fa fa-comment"></i>
-                                        <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
-                                    </label>
-                                    @if(isset($user))
-                                        @if($u == $user)
-                                    <label class="delete" id="">
-                                        <i class="icon fa fa-trash"></i>
-                                        <a href="/delete?idB={{ $cmt->idSach }}&idcmt={{ $cmt->idDanhgia }}">delete</a>
-                                    </label>
-                                        @endif
-                                    @endif
-                                </div>
-                            </center>
-                        </div>
-                    </div>
-                    <form method="post" class="rowReply" id="reply{{ $i }}">
-                        <div class="avt-rep">
-                            <img src="img/live-search.png" alt="avt reply">
-                        </div>
-                        <div class="content-reply">
-                            <input type="text" name="rep{{ $i }}" id="" placeholder="nhập câu trả lời của bạn">
-                            <input type="text" name="id" id="idB" value="{{ $idb }}" hidden>
-                            <input type="text" name="idmem" id="idmem" hidden value="{{ $idmem }}">
-                            <input type="hidden" name="_token"  value="<?php echo csrf_token(); ?>">
-                            <input type="submit" value="gữi">
-                        </div>
-                    </form>
-                    <div class="row-rep">
-                        
-                    </div>
-                </div>
+            @endphp
+            @foreach($cmts as $cmt)
+                @if($cmt == NULL)
+                    @php $check = TRUE; @endphp
+                @endif
             @endforeach
+            @if($check)
+                <div class="row-rate">
+                    <center>
+                        <span>chưa có đánh giá nào, hãy là người đánh giá đầu tiên</span>
+                    </center>
+                </div>
+            @else
+                @foreach($cmts as $cmt)
+                    @php 
+                        $i++; 
+                        $member = App\Http\Controllers\UserController::getMem($cmt->idMember);
+                        $u = '';
+                    @endphp
+                    
+                    <div class="row-rate" id="cmt{{ $i }}">
+                        <div class="main">
+                            <div class="img">
+                                <img src="img/live-search.png" alt="" class="avt">
+                            </div>
+                            <div class="main-rate">
+                                @foreach($member as $m)
+                                    @if($m->MemberName != NULL)
+                                        <h2>{{ $m->MemberName; }}</h2>
+                                    @else
+                                        <h2>Chưa đặt tên</h2>
+                                    @endif
+                                    @php $u = $m->username @endphp
+                                @endforeach
+                                
+                                <span> {{ $cmt->Noidung }} </span>
+                                <center>
+                                    <div class="tool">
+                                        <label class="like">
+                                            <i class="icon fa fa-thumbs-up"></i>
+                                            <a href="#cmt{{ $i }}">like</a>
+                                        </label>
+                                        <label class="comment" id="">
+                                            <i class="icon fa fa-comment"></i>
+                                            <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
+                                        </label>
+                                        @if(isset($user))
+                                            @if($u == $user)
+                                        <label class="delete" id="">
+                                            <i class="icon fa fa-trash"></i>
+                                            <a href="/delete?idB={{ $cmt->idSach }}&idcmt={{ $cmt->idDanhgia }}">delete</a>
+                                        </label>
+                                            @endif
+                                        @endif
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                        <form method="post" class="rowReply" id="reply{{ $i }}">
+                            <div class="avt-rep">
+                                <img src="img/live-search.png" alt="avt reply">
+                            </div>
+                            <div class="content-reply">
+                                <input type="text" name="rep{{ $i }}" id="" placeholder="nhập câu trả lời của bạn">
+                                <input type="text" name="id" id="idB" value="{{ $idb }}" hidden>
+                                <input type="text" name="idmem" id="idmem" hidden value="{{ $idmem }}">
+                                <input type="hidden" name="_token"  value="<?php echo csrf_token(); ?>">
+                                <input type="submit" value="gữi">
+                            </div>
+                        </form>
+                        <div class="row-rep">
+                            
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </div>

@@ -69,16 +69,8 @@ class User extends Authenticatable
             return True;
         return False;
     }
-    public function getName($user){
+    public function getMem($user){
         $name = DB::table('tblaccount')->where('username','=',$user)->orwhere('idMember',$user)->get();
         return $name;
-    }
-    public function getID($user){
-        $m = DB::table('tblaccount')->where('username','$user')->get();
-        $id = '';
-        foreach($m as $name){
-            $id = $name->idMember;
-        }
-        return $id;
     }
 }

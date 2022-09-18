@@ -44,8 +44,13 @@ class Book extends Model
 
     //get cur book
     public function CurrentBook($idBook){
-        $book = DB::table('tblsach')->join('chitietsach','tblsach.idSach','=','chitietsach.idSach')->join('tblfavorite','tblsach.idSach','=','tblfavorite.idSach')->join('tbldanhgia','tblsach.idSach','=','tbldanhgia.idSach')->where('tblsach.idSach',$idBook)->orderBy('idDanhgia','desc')->get();
+        $book = DB::table('tblsach')->join('chitietsach','tblsach.idSach','=','chitietsach.idSach')->where('tblsach.idSach',$idBook)->get();
         return $book;
+    }
+    //get cmt current book
+    public function CmtBook($id){
+        $cmt = DB::table('tbldanhgia')->where('idSach',$id)->orderBy('idDanhgia','desc')->get();
+        return $cmt;
     }
 
     //get books relate

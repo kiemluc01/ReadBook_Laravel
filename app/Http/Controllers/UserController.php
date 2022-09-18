@@ -55,12 +55,8 @@ class UserController extends Controller
                 </script>';
         return $js;
     }
-    public static function getName($id){
+    public static function getMem($id){
         $user = new User();
-        return $user->getName($id);
-    }
-    public static function getID($user){
-        $user = new User();
-        return $user->getID($user);
+        return $user->getMem($id);
     }
 }

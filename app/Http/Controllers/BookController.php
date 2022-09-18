@@ -36,6 +36,11 @@ class BookController extends Controller
         $book = new Book();
         return $book->CurrentBook($idBook);
     }
+    //get cmt book
+    public static function getCmt($idBook){
+        $book = new Book();
+        return $book->CmtBook($idBook);
+    }
 
     //get book relate
     public static function BookRelate($IDcat,$idBook){
