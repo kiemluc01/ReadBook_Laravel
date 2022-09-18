@@ -56,6 +56,8 @@ Route::controller(CookieController::class)->group(function(){
 });
 //run book request
 Route::controller(BookController::class)->group(function(){
-    Route::get('/delete','delcmt');
+    Route::get('/delCmt','delcmt');
     Route::post('/Rate','rate');
+    Route::post('/Reply','reply');
+    Route::get('/delRep','delRep');
 });

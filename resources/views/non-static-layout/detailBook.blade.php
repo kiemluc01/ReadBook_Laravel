@@ -134,38 +134,81 @@
                                             <i class="icon fa fa-thumbs-up"></i>
                                             <a href="#cmt{{ $i }}">like</a>
                                         </label>
-                                        <label class="comment" id="">
-                                            <i class="icon fa fa-comment"></i>
-                                            <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
-                                        </label>
+                                        
                                         @if(isset($user))
+                                            <label class="comment" id="">
+                                                <i class="icon fa fa-comment"></i>
+                                                <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
+                                            </label>
                                             @if($u == $user)
-                                        <label class="delete" id="">
-                                            <i class="icon fa fa-trash"></i>
-                                            <a href="/delete?idB={{ $cmt->idSach }}&idcmt={{ $cmt->idDanhgia }}">delete</a>
-                                        </label>
+                                                <label class="delete" id="">
+                                                    <i class="icon fa fa-trash"></i>
+                                                    <a href="/delCmt?idB={{ $cmt->idSach }}&idcmt={{ $cmt->idDanhgia }}">delete</a>
+                                                </label>
                                             @endif
                                         @endif
                                     </div>
                                 </center>
                             </div>
                         </div>
-                        <form method="post" class="rowReply" id="reply{{ $i }}">
+                        <div class="rowReply" id="reply{{ $i }}">
                             <div class="avt-rep">
                                 <img src="img/live-search.png" alt="avt reply">
                             </div>
-                            <div class="content-reply">
-                                <input type="text" name="rep{{ $i }}" id="" placeholder="nhập câu trả lời của bạn">
-                                <input type="text" name="id" id="idB" value="{{ $idb }}" hidden>
-                                <input type="text" name="idmem" id="idmem" hidden value="{{ $idmem }}">
-                                <input type="hidden" name="_token"  value="<?php echo csrf_token(); ?>">
+                            <form method="post" action="/Reply" class="content-reply">
+                                <input type="text" name="repText" id="" placeholder="nhập câu trả lời của bạn">
                                 <input type="submit" value="gữi">
-                            </div>
-                        </form>
-                        <div class="row-rep">
-                            
+                                <input type="text" name="idB" id="idB" value="{{ $_REQUEST['id'] }}" hidden>
+                                <input type="text" name="idrate" id="idrate" value="{{ $cmt->idDanhgia }}" hidden>
+                                <input type="text" name="idm" id="idmem" hidden value="{{ $idmem }}">
+                                <input type="hidden" name="_token"  value="<?php echo csrf_token(); ?>">
+                            </form>
                         </div>
                     </div>
+                    @php $replys = App\Http\Controllers\BookController::getRep($cmt->idDanhgia); @endphp
+                    @foreach($replys as $reply)
+                        @php 
+                            $i++; 
+                            $member = App\Http\Controllers\UserController::getMem($reply->idMember);
+                            $u = '';
+                        @endphp
+                        <div class="row-rep">
+                            <div class="main">
+                                <div class="img">
+                                    <img src="img/live-search.png" alt="" class="avt">
+                                </div>
+                                
+                                <div class="main-rate">
+                                    @foreach($member as $m)
+                                        @if($m->MemberName != NULL)
+                                            <h2>{{ $m->MemberName; }}</h2>
+                                        @else
+                                            <h2>Chưa đặt tên</h2>
+                                        @endif
+                                        @php $u = $m->username @endphp
+                                    @endforeach
+                                    <span> {{ $reply->Noidung }} </span>
+                                    <center>
+                                        <div class="tool">
+                                            <label class="like">
+                                                <i class="icon fa fa-thumbs-up"></i>
+                                                <a href="#cmt{{ $i }}">like</a>
+                                            </label>
+                                            @if(isset($user))
+                                                @if($u == $user)
+                                                    <label class="delete" id="">
+                                                        <i class="icon fa fa-trash"></i>
+                                                        <a href="/delRep?idB={{ $cmt->idSach }}&idrep={{ $reply->idRep }}">delete</a>
+                                                    </label>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    @endforeach
                 @endforeach
             @endif
         </div>

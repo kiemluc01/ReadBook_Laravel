@@ -56,10 +56,29 @@ class BookController extends Controller
             return redirect('/Book?id='.$_REQUEST['idB'].'#cmt');
     }
 
+    //del rep
+    public function delRep(){
+        $book = new Book();
+        if($book->delRep($_REQUEST['idrep']))
+            return redirect('/Book?id='.$_REQUEST['idB'].'#cmt');
+    }
+
     public function rate(){
         $book = new Book();
         if($book->Rate($_REQUEST['id'],$_REQUEST['idm'],$_REQUEST['rateText']))
             return redirect('/Book?id='.$_REQUEST['id'].'#cmt');
         return redirect(url()->current());
+    }
+    //reply cmt
+    public function reply(){
+        $book = new Book();
+        if($book->reply($_REQUEST['idrate'],$_REQUEST['idm'],$_REQUEST['repText']))
+            return redirect('/Book?id='.$_REQUEST['idB'].'#cmt');
+    }
+
+    //get reply
+    public static function getRep($idRate){
+        $book = new Book();
+        return $book->getRep($idRate);
     }
 }

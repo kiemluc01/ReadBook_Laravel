@@ -174,7 +174,24 @@
     -o-border-radius: 10px/10px;
 }
 
-.rate-container .all-rate .row-rate .main {
+.rate-container .all-rate .row-rep {
+    padding: 0px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-left: 5%;
+    width: 75%;
+    height: auto;
+    background-color: rgb(236, 236, 236);
+    color: #000;
+    border-radius: 10px/10px;
+    -webkit-border-radius: 10px/10px;
+    -moz-border-radius: 10px/10px;
+    -ms-border-radius: 10px/10px;
+    -o-border-radius: 10px/10px;
+}
+
+.rate-container .all-rate .row-rate .main,
+.rate-container .all-rate .row-rep .main {
     display: flex;
 }
 
@@ -189,21 +206,36 @@
     -o-border-radius: 50%/50%;
 }
 
-.rate-container .all-rate .row-rate .main-rate {
+.rate-container .all-rate .row-rep .img img {
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%/50%;
+    -webkit-border-radius: 50%/50%;
+    -moz-border-radius: 50%/50%;
+    -ms-border-radius: 50%/50%;
+    -o-border-radius: 50%/50%;
+}
+
+.rate-container .all-rate .row-rate .main-rate,
+.rate-container .all-rate .row-rep .main-rate {
     width: 80%;
 }
 
-.rate-container .all-rate .row-rate .main-rate>h2 {
+.rate-container .all-rate .row-rate .main-rate>h2,
+.rate-container .all-rate .row-rep .main-rate>h2 {
     margin-bottom: 3px;
     margin-top: 10px;
 }
 
-.rate-container .all-rate .row-rate .main-rate center .tool {
+.rate-container .all-rate .row-rate .main-rate center .tool,
+.rate-container .all-rate .row-rep .main-rate center .tool {
     width: 80%;
     display: flex;
 }
 
-.rate-container .all-rate .row-rate .main-rate center .tool label {
+.rate-container .all-rate .row-rate .main-rate center .tool label,
+.rate-container .all-rate .row-rep .main-rate center .tool label {
     width: 30%;
     margin-left: 5px;
 }

@@ -61,7 +61,15 @@ class Book extends Model
 
     //delete cmt
     public function delcmt($id){
-        if(DB::delete('delete from tbldanhgia where idDanhgia = ?',[$id]))
+        if(DB::delete('delete from tblreply where idDanhgia = ?',[$id])){
+            if(DB::delete('delete from tbldanhgia where idDanhgia = ?',[$id]))
+                return True;
+            return False;
+        }
+        return False;
+    }
+    public function delRep($id){
+        if(DB::delete('delete from tblreply where idRep = ?',[$id]))
             return True;
         return False;
     }
@@ -71,5 +79,17 @@ class Book extends Model
         if(DB::table('tbldanhgia')->insert(['idMember' => $idm, 'idSach' => $idB, 'Noidung' => $nd]))
             return True;
         return False;
+    }
+
+    //rep cmt
+    public function reply($idrate,$idm,$repText){
+        if(DB::table('tblreply')->insert(['idMember' => $idm, 'idDanhgia' => $idrate, 'Noidung' => $repText]))
+            return True;
+        return False;
+    }
+    //get reply
+    public function getRep($idrate){
+        $rep = DB::table('tblreply')->where('idDanhgia','=',$idrate)->get();
+        return $rep;
     }
 }

@@ -59,4 +59,6 @@ class UserController extends Controller
         $user = new User();
         return $user->getMem($id);
     }
+
+    
 }
