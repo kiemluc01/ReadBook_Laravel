@@ -61,10 +61,10 @@ class User extends Authenticatable
     }
 
     //register
-    public function Register(String $email,String $user,String $pw){
+    public function Register(String $name,String $email,String $user,String $pw){
         
-        if(DB::table('users')->insert(
-            ['email' => $email, 'name' => $user, 'password' => $pw]
+        if(DB::table('tblaccount')->insert(
+            ['MemberName' => $name,'email' => $email, 'username' => $user, 'password' => $pw]
         ))
             return True;
         return False;

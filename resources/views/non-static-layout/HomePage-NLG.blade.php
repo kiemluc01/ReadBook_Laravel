@@ -1,5 +1,8 @@
 @extends('.template.main-layout')
 @section('content')
+@php 
+    App\Http\Controllers\CookieController::set('url',url()->current());
+@endphp
 <div class="content-container">
     <!-- row  -->
     @php

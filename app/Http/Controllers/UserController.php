@@ -14,6 +14,10 @@ class UserController extends Controller
         
     }
     public function Login(){
+        $link = "/Home";
+        $Cookie = new CookieController();
+        if($Cookie->check('url'))
+            $link = $Cookie->get('url');
         $user = new  User();
         if($user->Login($_REQUEST['user'],$_REQUEST['pw'])){
             $Cookie = new CookieController();
@@ -21,7 +25,7 @@ class UserController extends Controller
             $js = '
             <script>
                 alert("Đăng nhập thành công")
-                location.href = "/Home"
+                location.href = "'.$link.'"
             </script>';
             return $js;
         }    
@@ -35,8 +39,9 @@ class UserController extends Controller
     }
     public function Register(){
         if($_REQUEST['pw'] == $_REQUEST['cfpw']){
+            
             $user = new  User();
-            if($user->Register($_REQUEST['email'],$_REQUEST['user'],$_REQUEST['pw'])){
+            if($user->Register($_REQUEST['name'],$_REQUEST['email'],$_REQUEST['user'],$_REQUEST['pw'])){
                 $js = '<script>
                         alert("Đăng kí thành công")
                         location.href = "/Login"

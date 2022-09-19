@@ -1,11 +1,20 @@
 @extends('..template.main-layout')
 @section('content')
-@php
+
+@php 
     $book = App\Http\Controllers\Bookcontroller::CurrentBook($_REQUEST['id']);
     $idCat ='';
     $idmem = '';
     
-    $idb ='';      
+    $idb ='';  
+    $view = 0;    
+@endphp
+@foreach($book as $b1)
+    @php $view = $b1->Luotxem; @endphp
+@endforeach
+@php 
+    App\Http\Controllers\Bookcontroller::viewUp($view); 
+    $book = App\Http\Controllers\Bookcontroller::CurrentBook($_REQUEST['id']);
 @endphp
 @if(isset($user))
     @php
@@ -33,13 +42,13 @@
             <div class="news-book">
                 <h1> {{ $b->Tensach }} </h1>
                 <p><strong>{{ $b->Tacgia }}</strong></p>
-                <i class="icon fa fa-eye">1000</i>
+                <i class="icon fa fa-eye">{{ $b->Luotxem }}</i>
                 <hr>
                 <span>{{ $b->TomtatND }}</span>
             </div>
         </div>
         <div class="container-btn">
-            <a href="/Book/Read?id=<?php echo $_REQUEST['id']; ?>"><strong>Đọc</strong></a>
+            <a href="/Read?id=<?php echo $_REQUEST['id']; ?>"><strong>Đọc</strong></a>
         </div>
     </div>
         @break;
@@ -134,12 +143,11 @@
                                             <i class="icon fa fa-thumbs-up"></i>
                                             <a href="#cmt{{ $i }}">like</a>
                                         </label>
-                                        
+                                        <label class="comment" id="">
+                                            <i class="icon fa fa-comment"></i>
+                                            <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
+                                        </label>
                                         @if(isset($user))
-                                            <label class="comment" id="">
-                                                <i class="icon fa fa-comment"></i>
-                                                <a href="#cmt{{ $i }}" class="reply" rep="reply{{ $i }}">reply</a>
-                                            </label>
                                             @if($u == $user)
                                                 <label class="delete" id="">
                                                     <i class="icon fa fa-trash"></i>
@@ -156,7 +164,7 @@
                                 <img src="img/live-search.png" alt="avt reply">
                             </div>
                             <form method="post" action="/Reply" class="content-reply">
-                                <input type="text" name="repText" id="" placeholder="nhập câu trả lời của bạn">
+                                <input type="text" name="repText"  id="inputreply{{ $i }}" placeholder="nhập câu trả lời của bạn">
                                 <input type="submit" value="gữi">
                                 <input type="text" name="idB" id="idB" value="{{ $_REQUEST['id'] }}" hidden>
                                 <input type="text" name="idrate" id="idrate" value="{{ $cmt->idDanhgia }}" hidden>

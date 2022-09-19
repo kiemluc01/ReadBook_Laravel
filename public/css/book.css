@@ -72,6 +72,14 @@
     font-weight: lighter;
 }
 
+.news-book span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
 
 /* detail book */
 

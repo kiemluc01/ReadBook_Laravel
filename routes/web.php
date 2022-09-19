@@ -26,15 +26,16 @@ Route::get('/Home', function () {
     return view('non-static-layout.HomePage-LG',['user' => Cookie::get('user')]);
 });
 //read book
-Route::prefix('/Book')->group(function () {
-    Route::get('/',function(){
-        return view('non-static-layout.detailBook',['user' => Cookie::get('user')]);
-    });
-    Route::get('/Read', function () {
-        if(isset($_REQUEST['id']))
-        $id = $_REQUEST['id'];
-        return view('non-static-layout.Read',['user' => Cookie::get('user'),'idBook' => $id]);
-    });
+Route::get('/Book',function(){
+    return view('non-static-layout.detailBook',['user' => Cookie::get('user')]);
+});
+Route::get('/Read', function () {
+    if(!is_null(Cookie::get('user')))
+        return view('non-static-layout.Read',['user' => Cookie::get('user')]);
+    echo '<script>
+        alert("xin mời đăng nhập để tiếp tục")
+    </script>';
+    return view('non-static-layout.Login');
 });
 //url login
 Route::get('/Login', function () {
@@ -58,6 +59,8 @@ Route::controller(CookieController::class)->group(function(){
 Route::controller(BookController::class)->group(function(){
     Route::get('/delCmt','delcmt');
     Route::post('/Rate','rate');
+    Route::get('/Rate','rate');
     Route::post('/Reply','reply');
+    Route::get('/Reply','reply');
     Route::get('/delRep','delRep');
 });

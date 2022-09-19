@@ -18,12 +18,32 @@
         <script src="js/auto-add.js"></script>
     </head>
     <body >
-    <?php
-        if(empty($user))
-            $href = '/';
-        else
-            $href = '/Home';
-    ?>
+    
+        @if(strpos(url()->current(),'Login'))
+            @php 
+                \App\Http\Controllers\CookieController::delete('user');
+            @endphp
+        @elseif(strpos(url()->current(),'Register'))
+            @php 
+                \App\Http\Controllers\CookieController::delete('url');
+            @endphp
+        @else
+        @php $id =''; @endphp
+            @if(isset($_REQUEST['id']))
+                @php $id = "?id=".$_REQUEST['id']; @endphp
+            @endif
+            @php 
+                \App\Http\Controllers\CookieController::set('url',url()->current().$id);
+            @endphp
+        @endif
+        @if(empty($user))
+            @php $href = '/'; @endphp
+        @else
+            @php 
+                $href = '/Home';
+                \App\Http\Controllers\CookieController::setUser($user);
+            @endphp
+        @endif
         <!-- header -->
         <div class="header" id="header">
             <img src="img/book.jpg" alt="logo" class="logo">
