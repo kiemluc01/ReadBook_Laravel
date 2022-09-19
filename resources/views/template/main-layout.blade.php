@@ -15,6 +15,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.2.8/emojionearea.min.js"></script>
         <script src="js/click.js"></script>
+        <script src="js/auto-add.js"></script>
     </head>
     <body >
     <?php
@@ -24,7 +25,7 @@
             $href = '/Home';
     ?>
         <!-- header -->
-        <div class="header">
+        <div class="header" id="header">
             <img src="img/book.jpg" alt="logo" class="logo">
             <nav class="menu">
                 <li><a href="<?php echo $href ?>">Trang chủ</a></li>
