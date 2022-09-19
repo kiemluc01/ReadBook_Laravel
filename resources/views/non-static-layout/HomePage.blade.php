@@ -1,14 +1,5 @@
 @extends('.template.main-layout')
 @section('content')
-@php 
-    App\Http\Controllers\CookieController::set('url',url()->current());
-@endphp
-    @if(empty($user))
-        <script>
-            alert("bạn phải đăng nhập trước")
-            location.href = "/Login"
-        </script>
-    @endif
 
 <div class="content-container">
     <!-- row  -->

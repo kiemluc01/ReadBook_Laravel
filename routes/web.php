@@ -18,13 +18,14 @@ use Illuminate\Support\Facades\Cookie;
 // Trang chủ chưa login
 Route::get('/', function () {
     // return view('template.main-layout');
-    return view('non-static-layout.HomePage-NLG');
+    $cookie = new CookieController();
+    if(!$cookie->check('user'))
+        return view('non-static-layout.HomePage');
+    return view('non-static-layout.HomePage',['user' => Cookie::get('user')]);
 });
 
 // Trang chủ đã login
-Route::get('/Home', function () {
-    return view('non-static-layout.HomePage-LG',['user' => Cookie::get('user')]);
-});
+
 //read book
 Route::get('/Book',function(){
     return view('non-static-layout.detailBook',['user' => Cookie::get('user')]);

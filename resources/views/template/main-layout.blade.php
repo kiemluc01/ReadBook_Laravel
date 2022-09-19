@@ -36,19 +36,11 @@
                 \App\Http\Controllers\CookieController::set('url',url()->current().$id);
             @endphp
         @endif
-        @if(empty($user))
-            @php $href = '/'; @endphp
-        @else
-            @php 
-                $href = '/Home';
-                \App\Http\Controllers\CookieController::setUser($user);
-            @endphp
-        @endif
         <!-- header -->
         <div class="header" id="header">
             <img src="img/book.jpg" alt="logo" class="logo">
             <nav class="menu">
-                <li><a href="<?php echo $href ?>">Trang chủ</a></li>
+                <li><a href="/">Trang chủ</a></li>
                 <li><a href="">Danh mục</a></li>
                 <li><a href=""></a>Ngôn ngữ</li>
                 <li><a href=""></a>Trợ giúp</li>

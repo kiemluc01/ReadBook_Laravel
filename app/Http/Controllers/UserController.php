@@ -14,7 +14,7 @@ class UserController extends Controller
         
     }
     public function Login(){
-        $link = "/Home";
+        $link = "/";
         $Cookie = new CookieController();
         if($Cookie->check('url'))
             $link = $Cookie->get('url');
