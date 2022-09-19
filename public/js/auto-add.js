@@ -1,14 +1,15 @@
 $(document).ready(function() {
     var menu = document.getElementById("header");
-    var top = window.pageXOffset
+
 
     $(window).bind('mousewheel', function(event) {
-        if (top >= 100) {
-            if (event.originalEvent.wheelDelta >= 0) {
+        if (event.originalEvent.wheelDelta >= 0) {
+            if (window.pageYOffset >= 100)
                 menu.classList.add("sticky")
-            } else {
+            else
                 menu.classList.remove("sticky")
-            }
+        } else {
+            menu.classList.remove("sticky")
         }
     })
 })
