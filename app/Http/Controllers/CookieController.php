@@ -32,7 +32,7 @@ class CookieController extends Controller
             return True;
         return False;
     }
-    public function get($cookieName){
+    public static function get($cookieName){
         return Cookie::get($cookieName);
     }
 }

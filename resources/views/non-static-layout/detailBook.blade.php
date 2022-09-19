@@ -12,10 +12,12 @@
 @foreach($book as $b1)
     @php $view = $b1->Luotxem; @endphp
 @endforeach
-@php 
-    App\Http\Controllers\Bookcontroller::viewUp($view); 
-    $book = App\Http\Controllers\Bookcontroller::CurrentBook($_REQUEST['id']);
-@endphp
+@if( !(strpos(App\Http\Controllers\CookieController::get('url'),url()->current())  !== FALSE ) )
+    @php 
+        App\Http\Controllers\Bookcontroller::viewUp($view); 
+        $book = App\Http\Controllers\Bookcontroller::CurrentBook($_REQUEST['id']);
+    @endphp
+@endif
 @if(isset($user))
     @php
         $mem = App\Http\Controllers\UserController::getMem($user); 
@@ -141,7 +143,7 @@
                                     <div class="tool">
                                         <label class="like">
                                             <i class="icon fa fa-thumbs-up"></i>
-                                            <a href="#cmt{{ $i }}">like</a>
+                                            <a href="#cmt{{ $i }}" >like</a>
                                         </label>
                                         <label class="comment" id="">
                                             <i class="icon fa fa-comment"></i>
