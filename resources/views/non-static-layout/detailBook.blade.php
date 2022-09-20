@@ -160,6 +160,9 @@
                                     </div>
                                 </center>
                             </div>
+                            <div class="time">
+                                <span> {{ substr($cmt->Thoigian,0,strlen($cmt->Thoigian) - 9) }} </span>
+                            </div>
                         </div>
                         <div class="rowReply" id="reply{{ $i }}">
                             <div class="avt-rep">
@@ -214,6 +217,9 @@
                                             @endif
                                         </div>
                                     </center>
+                                </div>
+                                <div class="time">
+                                    <span> {{ substr($reply->Thoigian,0,strlen($reply->Thoigian) - 9) }} </span>
                                 </div>
                             </div>
                         </div>

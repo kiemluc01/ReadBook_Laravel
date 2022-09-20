@@ -227,7 +227,17 @@
 
 .rate-container .all-rate .row-rate .main-rate,
 .rate-container .all-rate .row-rep .main-rate {
-    width: 80%;
+    width: 70%;
+}
+
+.rate-container .all-rate .row-rep .time,
+.rate-container .all-rate .row-rate .time {
+    width: 15%;
+}
+
+.rate-container .all-rate .row-rep .time span,
+.rate-container .all-rate .row-rate .time span {
+    font-size: 10px;
 }
 
 .rate-container .all-rate .row-rate .main-rate>h2,
